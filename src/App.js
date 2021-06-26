@@ -16,13 +16,11 @@ class App extends React.Component{
 
   async componentDidMount() {
     // We will fetch the data here
-
     const response = await fetch(API_URL)
     const stories = await response.json();
     this.setState({
       stories: stories
     })
-
   }
   
   handleSubmit(e) {
@@ -78,7 +76,41 @@ class App extends React.Component{
       stories: updatedState
     });
   }
-  
+
+  onToggleEdit = (id) => {
+    // alert(`Story is being cancelled ${id}`);
+
+    // text-decoration: line-through;
+    const updatedState = this.state.stories.map(story => {
+      if (story.id == id) {
+        story.edit = !story.edit;
+      }
+      return story;
+    });
+
+    this.setState({
+      stories: updatedState
+    });
+  }
+
+  onUpdates = (id, title) => {
+    // alert(`Story is being cancelled ${id}`);
+
+    // text-decoration: line-through;
+    const updatedState = this.state.stories.map(story => {
+      if (story.id == id) {
+        story.edit = !story.edit;
+        story.title = title;
+      }
+      return story;
+    });
+
+    this.setState({
+      stories: updatedState
+    });
+  }
+
+
   render() {
     console.log(this.state);
     return (
@@ -88,7 +120,12 @@ class App extends React.Component{
           <input ref={this.titleRef} />
           <button>Submit</button>
         </form>
-        <StoryList onCancel={this.onCancel} onDelete={this.onDelete} data ={this.state.stories}/>  
+        <StoryList 
+          onUpdates = {this.onUpdates}
+          onToggleEdit = {this.onToggleEdit} 
+          onCancel={this.onCancel} 
+          onDelete={this.onDelete} 
+          data ={this.state.stories}/>  
       </div>
     )
   }

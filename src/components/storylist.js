@@ -17,6 +17,15 @@ export default class StoryList extends React.Component {
   onCancel = (id) => {
     this.props.onCancel(id);
   }
+
+  onToggleEdit = (id) => {
+    this.props.onToggleEdit(id);
+  }
+
+  onUpdates = (id, title) => {
+    this.props.onUpdates(id, title);
+  }
+  
   
   render() {
     return (
@@ -24,7 +33,7 @@ export default class StoryList extends React.Component {
         <h1>Story List</h1>
         <ul>
           {
-            this.props.data.map(story => <Story onCancel={this.onCancel} onDelete={this.onDelete} key={story.id} data={story} /> )
+            this.props.data.map(story => <Story onUpdates={this.onUpdates} onToggleEdit={this.onToggleEdit} onCancel={this.onCancel} onDelete={this.onDelete} key={story.id} data={story} /> )
           }
         </ul>
       </div>
