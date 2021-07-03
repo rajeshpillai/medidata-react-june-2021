@@ -29,7 +29,7 @@ export default class CounterApp extends Component {
   render() {
     let counters =[];
     for(let i = 0; i < this.state.counters; i++) {
-      counters.push(<Counter key={i} />);
+      counters.push(<Counter key={i} index={i} />);
     }
     return (
       <div className="container">

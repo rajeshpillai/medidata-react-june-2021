@@ -16,6 +16,17 @@ export default class Counter extends React.Component {
     // YOu can check the prev values
   }
 
+  // Runs before the render method is called both on the initial
+  // mount and subsequent updates
+  static getDerivedStateFromProps(props, state) {
+    console.log("Counter: GDSFP");
+    if (props.index == state.counter) {
+      return {
+        counter: props.index
+      }
+    }
+    return null;  // State is unchanged
+  }
   // When component is removed from the DOM tree
   // YOu can do clean up here like resetting timer, removing event handlers etc.
   componentWillUnmount() {
