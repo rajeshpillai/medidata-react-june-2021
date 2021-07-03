@@ -1,9 +1,10 @@
 import React, {useContext} from 'react';
 import StoryContext from '../../context/story-context';
-
+import ThemeContext from '../../context/theme-context';
 export default function Story(props) {
   const {onDelete, onCancel, onToggleEdit,onUpdates} = useContext(StoryContext);
   const editRef = React.createRef();
+  const theme = useContext(ThemeContext);
   
   const handleClick =() => {
     let response = window.confirm("Are you sure?");
@@ -41,7 +42,7 @@ export default function Story(props) {
         : <span>{title}</span>
 
   return (
-    <li className={`story-item ${cancelled}` } key={id}>
+    <li className={`story-item ${cancelled} ${theme}` } key={id}>
       {editview}
       <button onClick={handleClick}>x</button>
       <button onClick={handleCancel}>cancel story</button>

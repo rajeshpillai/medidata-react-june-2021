@@ -32,3 +32,11 @@
   padding: 5px;
   margin: 10px;
 }
+
+.theme1 {
+  background: purple;
+  color: white;
+}
+.theme2 {
+  background: yellowgreen;
+}

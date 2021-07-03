@@ -1,6 +1,8 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import StoryList from './storylist';
 import StoryContext from '../../context/story-context';
+import ThemeContext from '../../context/theme-context';
+import ThemeProvider from '../../context/theme-provider';
 
 import '../../App.css';
 
@@ -9,6 +11,7 @@ const API_URL = "https://jsonplaceholder.typicode.com/posts";
 function StoryApp() {
   const [state, setState] = useState({stories: []});
   const titleRef = React.createRef();
+  const theme = useContext(ThemeContext);
  
 
   useEffect(() => {
@@ -102,17 +105,19 @@ function StoryApp() {
 
 
   return(
-      <StoryContext.Provider value = {storyProvider}>
-        <div>
-          <form className="story-form" onSubmit={handleSubmit}>
-            <label>New Story</label>
-            <input ref={titleRef} />
-            <button>Submit</button>
-          </form>
+      <ThemeProvider>
+        <StoryContext.Provider value = {storyProvider}>
+          <div className={`${theme}`}>
+            <form className="story-form" onSubmit={handleSubmit}>
+              <label>New Story</label>
+              <input ref={titleRef} />
+              <button>Submit</button>
+            </form>
 
-          <StoryList data ={state.stories}/>  
-        </div>
-      </StoryContext.Provider>
+            <StoryList data ={state.stories}/>  
+          </div>
+        </StoryContext.Provider>
+      </ThemeProvider>
     )
 }
 
