@@ -6,6 +6,10 @@ export default class CounterApp extends Component {
     counters: 0
   }
 
+  componentDidMount() {
+    console.log("CounterApp: CDM")
+  }
+
   addCounter = () => {
     this.setState(prevState => {
       return {
