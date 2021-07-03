@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import reportWebVitals from './reportWebVitals';
 import App from './App';
 import CounterApp from './features/counter/counter-app';
-
-import reportWebVitals from './reportWebVitals';
+import Counter from './hooks-app/counter';
 
 ReactDOM.render(
   <React.StrictMode>
-    <CounterApp />
+    <Counter />
   </React.StrictMode>,
   document.getElementById('root')
 );
