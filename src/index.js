@@ -8,10 +8,13 @@ import Counter from './hooks-app/counter';
 import MultipleStates from './hooks-app/multiple-state';
 import EffectsDemo from './hooks-app/effects-demo';
 import StoryApp from './hooks-app/story/story-app';
+import ThemeProvider from './context/theme-provider';
 
 ReactDOM.render(
   <React.StrictMode>
-    <StoryApp />
+    <ThemeProvider>
+        <StoryApp />
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

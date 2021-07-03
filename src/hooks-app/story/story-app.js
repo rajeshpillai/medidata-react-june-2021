@@ -2,7 +2,6 @@ import React, {useState, useEffect, useContext} from 'react';
 import StoryList from './storylist';
 import StoryContext from '../../context/story-context';
 import ThemeContext from '../../context/theme-context';
-import ThemeProvider from '../../context/theme-provider';
 
 import '../../App.css';
 
@@ -12,6 +11,8 @@ function StoryApp() {
   const [state, setState] = useState({stories: []});
   const titleRef = React.createRef();
   const theme = useContext(ThemeContext);
+
+  console.log("StoryApp:theme:", theme);
  
 
   useEffect(() => {
@@ -105,19 +106,17 @@ function StoryApp() {
 
 
   return(
-      <ThemeProvider>
-        <StoryContext.Provider value = {storyProvider}>
-          <div className={`${theme}`}>
-            <form className="story-form" onSubmit={handleSubmit}>
-              <label>New Story</label>
-              <input ref={titleRef} />
-              <button>Submit</button>
-            </form>
+      <StoryContext.Provider value = {storyProvider}>
+        <div className={`app ${theme}`}>
+          <form className="story-form" onSubmit={handleSubmit}>
+            <label>New Story</label>
+            <input ref={titleRef} />
+            <button>Submit</button>
+          </form>
 
-            <StoryList data ={state.stories}/>  
-          </div>
-        </StoryContext.Provider>
-      </ThemeProvider>
+          <StoryList data ={state.stories}/>  
+        </div>
+      </StoryContext.Provider>
     )
 }
 
