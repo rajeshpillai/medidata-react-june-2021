@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import StoryList from './storylist';
+import StoryContext from '../../context/story-context';
 
 import '../../App.css';
 
@@ -91,22 +92,27 @@ function StoryApp() {
     });
   }
 
+  const storyProvider = {
+    state,
+    onDelete,
+    onUpdates,
+    onToggleEdit,
+    onCancel
+  }
+
 
   return(
-      <div>
-        <form className="story-form" onSubmit={handleSubmit}>
-          <label>New Story</label>
-          <input ref={titleRef} />
-          <button>Submit</button>
-        </form>
+      <StoryContext.Provider value = {storyProvider}>
+        <div>
+          <form className="story-form" onSubmit={handleSubmit}>
+            <label>New Story</label>
+            <input ref={titleRef} />
+            <button>Submit</button>
+          </form>
 
-        <StoryList 
-          onUpdates = {onUpdates}
-          onToggleEdit = {onToggleEdit} 
-          onCancel={onCancel} 
-          onDelete={onDelete} 
-          data ={state.stories}/>  
-      </div>
+          <StoryList data ={state.stories}/>  
+        </div>
+      </StoryContext.Provider>
     )
 }
 

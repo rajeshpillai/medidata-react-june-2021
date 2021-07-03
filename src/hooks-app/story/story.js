@@ -1,22 +1,23 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import StoryContext from '../../context/story-context';
 
 export default function Story(props) {
-
+  const {onDelete, onCancel, onToggleEdit,onUpdates} = useContext(StoryContext);
   const editRef = React.createRef();
   
   const handleClick =() => {
     let response = window.confirm("Are you sure?");
     if (response) {
-      props.onDelete(props.data.id);
+      onDelete(props.data.id);
     }
   }
 
   const handleCancel = () => {
-    props.onCancel(props.data.id);
+    onCancel(props.data.id);
   }
 
-  const onToggleEdit = () => {
-    props.onToggleEdit(props.data.id);
+  const handleEdit = () => {
+    onToggleEdit(props.data.id);
   }
 
   const handleKeyDown = (e) => {
@@ -26,9 +27,9 @@ export default function Story(props) {
     console.log(e.keyCode);
 
     if (e.keyCode == 13) { // ENTER key
-      props.onUpdates(id, editRef.current.value);
+      onUpdates(id, editRef.current.value);
     } else if (e.keyCode == 17) {  // ESC key
-      props.onToggleEdit(id);
+      onToggleEdit(id);
     }
   }
 
@@ -44,7 +45,7 @@ export default function Story(props) {
       {editview}
       <button onClick={handleClick}>x</button>
       <button onClick={handleCancel}>cancel story</button>
-      <button onClick={onToggleEdit}>edit story</button>
+      <button onClick={handleEdit}>edit story</button>
     </li>
   )
 }
