@@ -2,6 +2,7 @@ import React, {useState, useEffect, useContext} from 'react';
 import StoryList from './storylist';
 import StoryContext from '../../context/story-context';
 import ThemeContext from '../../context/theme-context';
+import InputTag from '../../components/input-tag';
 
 import '../../App.css';
 
@@ -9,6 +10,8 @@ const API_URL = "https://jsonplaceholder.typicode.com/posts";
 
 function StoryApp() {
   const [state, setState] = useState({stories: []});
+  const [tags, setTags] = useState(["javascript","react"]);
+
   const titleRef = React.createRef();
   const theme = useContext(ThemeContext);
 
@@ -104,6 +107,17 @@ function StoryApp() {
     onCancel
   }
 
+  const onDeleteTag = (tag) => {
+    let remainingTags = tags.filter(t => {
+      return t !== tag;
+    });
+
+    setTags([...remainingTags]);
+  }
+
+  const onAddTag = (tag) => {
+    setTags([...tags, tag]);
+  }
 
   return(
       <StoryContext.Provider value = {storyProvider}>
@@ -113,6 +127,11 @@ function StoryApp() {
             <input ref={titleRef} />
             <button>Submit</button>
           </form>
+          <InputTag 
+            defaultTags = {tags} 
+            onDeleteTag = {onDeleteTag}
+            onAddTag = {onAddTag}
+          />
 
           <StoryList data ={state.stories}/>  
         </div>
