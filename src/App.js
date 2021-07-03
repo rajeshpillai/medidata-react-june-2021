@@ -1,5 +1,7 @@
 import React from 'react';
 import StoryList from './components/storylist';
+import StoryForm from './components/story-form';
+
 import './App.css';
 
 const API_URL = "https://jsonplaceholder.typicode.com/posts";
@@ -20,7 +22,20 @@ class App extends React.Component{
     const stories = await response.json();
     this.setState({
       stories: stories
-    })
+    });
+
+
+    // Promise.all([fetch('url1'), fetch('url2')])
+    //   .then([res1, res2]) => {
+    //     return Promise.all([res1.json(), res2.json()])
+    //   }).then ([data1, data2]) => {
+    //     //  Do what ever you want
+    //     this.setState({
+    //       data1: data1, 
+    //       data2: data2
+    //     })
+    //   }
+
   }
   
   handleSubmit(e) {
@@ -120,6 +135,8 @@ class App extends React.Component{
           <input ref={this.titleRef} />
           <button>Submit</button>
         </form>
+
+        <StoryForm />
         <StoryList 
           onUpdates = {this.onUpdates}
           onToggleEdit = {this.onToggleEdit} 
