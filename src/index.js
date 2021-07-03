@@ -5,10 +5,13 @@ import reportWebVitals from './reportWebVitals';
 import App from './App';
 import CounterApp from './features/counter/counter-app';
 import Counter from './hooks-app/counter';
+import MultipleStates from './hooks-app/multiple-state';
+import EffectsDemo from './hooks-app/effects-demo';
+import StoryApp from './hooks-app/story/story-app';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Counter />
+    <StoryApp />
   </React.StrictMode>,
   document.getElementById('root')
 );
