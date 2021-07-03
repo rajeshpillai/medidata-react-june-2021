@@ -32,9 +32,9 @@ export default class Story extends React.Component {
     const {id, title, cancel, edit} = this.props.data;
     console.log(e.keyCode);
 
-    if (e.keyCode == 13) {
+    if (e.keyCode == 13) { // ENTER key
       this.props.onUpdates(id, this.editRef.current.value);
-    } else if (e.keyCode == 17) {
+    } else if (e.keyCode == 17) {  // ESC key
       this.props.onToggleEdit(id);
     }
   }
@@ -43,7 +43,9 @@ export default class Story extends React.Component {
     const {id, title, cancel, edit} = this.props.data;
     const cancelled = cancel ? "cancel-story": "";
 
-    const editview = edit ? <input onKeyDown={this.handleKeyDown} ref={this.editRef} defaultValue={title} /> : <span>{title}</span>
+    const editview = edit 
+          ? <input onKeyDown={this.handleKeyDown} ref={this.editRef} defaultValue={title} /> 
+          : <span>{title}</span>
 
     return (
       <li className={`story-item ${cancelled}` } key={id}>

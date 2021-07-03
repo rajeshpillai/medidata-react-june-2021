@@ -2,9 +2,6 @@ import React from 'react';
 import Story from './story';
 
 export default class StoryList extends React.Component {
-  constructor() {
-    super();
-  }
   // Life cycle method
   componentDidMount() {
     console.log("CDM: fired");
