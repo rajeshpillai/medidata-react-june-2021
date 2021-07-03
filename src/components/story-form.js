@@ -6,29 +6,24 @@ export default class StoryForm extends React.Component {
     author: "",
     url: ""  
   }
-  // constructor() {
-  //   this.state = {
-  //     title: ""
-  //   }
-  // }
 
   handleChange = (e) => {
     this.setState({
-      title: e.target.value
+      [e.target.name]: e.target.value
     })
   }
 
-  handleChangeAuthor = (e) => {
-    this.setState({
-      author: e.target.value
-    })
-  }
+  // handleChangeAuthor = (e) => {
+  //   this.setState({
+  //     author: e.target.value
+  //   })
+  // }
 
-  handleChangeUrl = (e) => {
-    this.setState({
-      url: e.target.value
-    })
-  }
+  // handleChangeUrl = (e) => {
+  //   this.setState({
+  //     url: e.target.value
+  //   })
+  // }
 
   render() {
     return (
@@ -38,10 +33,10 @@ export default class StoryForm extends React.Component {
           onChange={this.handleChange}/>
 
         <input type="text" name="author" value={this.state.author} 
-          onChange={this.handleChangeAuthor}/>
+          onChange={this.handleChange}/>
 
-      <input type="text" name="url" value={this.state.url} 
-          onChange={this.handleChangeUrl}/>  
+        <input type="text" name="url" value={this.state.url} 
+          onChange={this.handleChange}/>  
         <button>Submit</button>
       </form>
     )
