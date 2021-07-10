@@ -6,14 +6,17 @@ export default function CounterReduxUse() {
   const [value, setValue] = useState(0);
   const dispatch = useDispatch();
 
-  const counter = useSelector(state => state.counter);
-  const messages = useSelector(state => state.messages);
+  // const counter = useSelector(state => state.counter);
+  // const messages = useSelector(state => state.messages);
 
+  const {counter, messages} = useSelector(state => ({
+    counter: state.counter,
+    messages: state.messages
+  }));
 
   const handleChange = (e) => {   
     setValue(e.target.value);
   }
-
 
   const new_message_payload = { 
       title:`New message ${+new Date()}`
