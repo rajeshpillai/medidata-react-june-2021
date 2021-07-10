@@ -3,7 +3,7 @@ export default function messengerReducer(state, action) {
   console.log(action);
   switch(action.type) {
     case Actions.ADD_MESSAGE:
-      let newMessage = {...action.payload};
+      let newMessage = {...action.message};
       newMessage.id = +new Date();
 
       return {

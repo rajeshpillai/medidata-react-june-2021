@@ -3,7 +3,7 @@ import Actions from './actions';
 const ActionCreators = {
   increment: () => ({ type: Actions.INCREMENT }),
   decrement: () => ({ type: Actions.DECREMENT }),
-  reset: () => ({ type: Actions.RESET }),
+  reset: (value) => ({ type: Actions.RESET, value: value }),
   addMessage: (message) => ({ type: Actions.ADD_MESSAGE, message }),
   removeMessage: (index) => ({ type: Actions.REMOVE_MESSAGE, index })
 }
