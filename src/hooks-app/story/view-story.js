@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {useHistory, useParams} from 'react-router-dom';
+import {Link, useHistory, useParams} from 'react-router-dom';
 
 export default function ViewStory() {
   const [story, setStory] = useState({});
@@ -19,6 +19,10 @@ export default function ViewStory() {
         setIsLoading(false);
     });
   },[id]);
+
+  const goBack = () => {
+    history.push("/storyapp");
+  }
   
   return (
     <>
@@ -30,6 +34,8 @@ export default function ViewStory() {
           {story.body}
         </div>
         <h4>Authored by: {story.userId}</h4>
+        <Link to="/storyapp">back</Link>
+        <button onClick={goBack}>Go back</button>
       </article>
       }
     </>
