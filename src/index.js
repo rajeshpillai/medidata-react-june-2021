@@ -15,7 +15,6 @@ ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider>
       <CounterReducerApp/>
-      <StoryApp />
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
