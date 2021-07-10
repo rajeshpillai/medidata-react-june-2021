@@ -10,11 +10,12 @@ import EffectsDemo from './hooks-app/effects-demo';
 import StoryApp from './hooks-app/story/story-app';
 import ThemeProvider from './context/theme-provider';
 import CounterReducerApp from './hooks-app/usereducer-app';
+import ReduxDemo from './hooks-app/redux-demo';
 
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider>
-      <CounterReducerApp/>
+      <ReduxDemo />
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')

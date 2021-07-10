@@ -29,6 +29,8 @@ export default function CounterReducerApp() {
     messages: messengerReducer
   })
 
+  console.log("combineReducer: ",rootReducer);
+
   const [state, dispatch] = useReducer(rootReducer, DEFAULT_STATE);
 
 
