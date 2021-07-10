@@ -1,5 +1,5 @@
 import React, {useReducer, useState} from 'react';
-
+import counterReducer from '../hooks-app/reducers/counter-reducer';
 
 const DEFAULT_STATE = {
     counter: 0,
@@ -7,28 +7,6 @@ const DEFAULT_STATE = {
     messages: []
 }
 
-function counterReducer(state, action) {
-  console.log(action);
-  switch(action.type) {
-    case 'INCREMENT':
-      return {
-        ...state,
-        counter: state.counter + 1
-      }
-    case 'DECREMENT':
-      return {
-        ...state,
-        counter: state.counter - 1
-      }
-    case "RESET":
-      return {
-        ...state,
-        counter: Number(action.value)
-      }
-    default:
-      return state;
-  }
-}
 
 export default function CounterReducerApp() {
   const [state, dispatch] = useReducer(counterReducer, DEFAULT_STATE);
