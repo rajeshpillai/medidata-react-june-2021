@@ -1,5 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+import {
+    BrowserRouter as Router, 
+    Switch,
+    Route,
+    useParams
+} from 'react-router-dom';
+
+
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import App from './App';
@@ -11,11 +20,32 @@ import StoryApp from './hooks-app/story/story-app';
 import ThemeProvider from './context/theme-provider';
 import CounterReducerApp from './hooks-app/usereducer-app';
 import ReduxDemo from './hooks-app/redux-demo';
+import NavBar from './components/navbar';
+import ViewStory from './hooks-app/story/view-story';
+
 
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider>
-      <ReduxDemo />
+      <Router>
+        <NavBar />
+        <Switch>
+          <Route path="/" exact>
+              <ReduxDemo />
+          </Route>
+          <Route path="/storyapp">
+              <StoryApp />
+          </Route>
+          <Route path="/counter-reducer">
+            <CounterReducerApp />
+          </Route>
+          <Route path="/effects-demo" component ={EffectsDemo} />
+          <Route path="/story/view/:id">
+              <ViewStory />
+          </Route>
+
+        </Switch>
+      </Router>
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')

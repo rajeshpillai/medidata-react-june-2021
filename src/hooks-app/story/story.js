@@ -1,6 +1,10 @@
 import React, {useContext} from 'react';
+import {Link} from 'react-router-dom';
+
+
 import StoryContext from '../../context/story-context';
 import ThemeContext from '../../context/theme-context';
+
 export default function Story(props) {
   const {onDelete, onCancel, onToggleEdit,onUpdates} = useContext(StoryContext);
   const editRef = React.createRef();
@@ -47,6 +51,7 @@ export default function Story(props) {
       <button onClick={handleClick}>x</button>
       <button onClick={handleCancel}>cancel story</button>
       <button onClick={handleEdit}>edit story</button>
+      <Link to={`/story/view/${id}`} className="view-story-link">view story</Link>     
     </li>
   )
 }

@@ -40,3 +40,22 @@
 .theme2 {
   background: yellowgreen;
 }
+
+.navbar {
+  list-style-type:none;
+  display: flex;
+}
+
+.navbar li {
+  padding: 5px;
+}
+
+.view-story-link {
+  background: white;
+}
+
+.story {
+  margin: 10px;
+  border: 1px solid #ddd;
+  padding: 10px;
+}
