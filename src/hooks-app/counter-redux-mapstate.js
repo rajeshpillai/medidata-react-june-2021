@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import ActionCreators from './reducers/action-creators';
 import {useDispatch, connect} from 'react-redux';
 
-function CounterRedux({counter, messages, incrementCounter, decrementCounter}) {
+function CounterReduxMapState({counter, messages, incrementCounter, decrementCounter}) {
   const [value, setValue] = useState(0);
   
   const dispatch = useDispatch();
@@ -68,7 +68,7 @@ const mapDispatchToProps = dispatch => {
 };
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(CounterRedux);
+export default connect(mapStateToProps, mapDispatchToProps)(CounterReduxMapState);
 
 
 
