@@ -9,11 +9,13 @@ import MultipleStates from './hooks-app/multiple-state';
 import EffectsDemo from './hooks-app/effects-demo';
 import StoryApp from './hooks-app/story/story-app';
 import ThemeProvider from './context/theme-provider';
+import CounterReducerApp from './hooks-app/usereducer-app';
 
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider>
-        <StoryApp />
+      <CounterReducerApp/>
+      <StoryApp />
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
