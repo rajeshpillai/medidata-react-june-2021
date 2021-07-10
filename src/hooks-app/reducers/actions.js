@@ -1,0 +1,9 @@
+let actions = {
+  INCREMENT: "INCREMENT",
+  DECREMENT: "DECREMENT",
+  RESET: "RESET",
+  ADD_MESSAGE: "ADD_MESSAGE",
+  REMOVE_MESSAGE: "REMOVE_MESSAGE"
+}
+
+export default actions;
