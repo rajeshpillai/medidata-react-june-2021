@@ -109,11 +109,17 @@ function FilteredUsers({users}) {
 }
 
 // All users
-function ReduxApp() {
+let ReduxApp = function ({users, filteredUsers}) {
   const dispatch = useDispatch();
-  const users = useSelector(state => state.user.users)
-  const filteredUsers = useSelector(state => state.user.filteredUsers)
+  
+  // const users = useSelector(state => state.user.users)
+  // const filteredUsers = useSelector(state => state.user.filteredUsers)
+
   const [search, setSearch] =useState("");
+
+  useEffect(() => {
+    console.log("users");
+  });
 
   useEffect(() => {
     async function doFetch(){
@@ -157,6 +163,16 @@ function ReduxApp() {
     </div>
   );
 }
+
+const mapState = (state) => {
+  return {
+    counter: state.counter,
+    users: state.user.users,
+    filteredUsers: state.user.filteredUsers
+  }
+}
+
+ReduxApp = connect(mapState)(ReduxApp);
 
 // The App
 export default function ReduxPerformance() {
