@@ -11,6 +11,8 @@ export default function NavBar() {
       <li><Link to="/storyapp">Story App</Link></li>
       <li><Link to="/counter-reducer">Counter Reducer</Link></li>
       <li><Link to="/effects-demo">Effects Demo</Link></li>
+      <li><Link to="/redux-perf">Redux Performance</Link></li>
+      
     </ul>
   );
 }
