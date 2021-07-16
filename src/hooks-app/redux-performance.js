@@ -1,12 +1,21 @@
 import React, {useState, useEffect} from 'react';
-import {createStore} from 'redux';
+import {createStore, combineReducers} from 'redux';
 import {useDispatch, connect, useSelector} from 'react-redux';
 import { Provider } from 'react-redux';
 
 const initialState = {
-  users: [],
-  filteredUsers: []
+  counter: 1,
+  user: {users: [], filteredUsers: []}
 };
+
+function counterReducer (state = 1, action) {
+  switch(action.type){
+    case 'INCREMENT':
+      return state + 1;
+    default:
+      return state;
+  }
+}
 
 function userReducer(state = initialState, action) {
   switch(action.type){
@@ -47,17 +56,68 @@ const getAllUsers = async (dispatch) => {
 };
 
 
-const store = createStore(userReducer, initialState);
+const rootReducers = combineReducers({
+  counter: counterReducer,
+  user: userReducer
+});
 
+const store = createStore(rootReducers, initialState);
 
+// Counter Component
+function Counter() {
+  const dispatch = useDispatch();
+  const counter = useSelector(state => state.counter);
+
+  const intervalId = React.useRef();
+
+  useEffect(() => {
+    intervalId.current = setInterval(() => {
+      dispatch({type: 'INCREMENT'});
+    },500);
+    return () => {
+      clearInterval(intervalId.current);
+    }
+  }, [dispatch]);
+
+  return (
+    <div>
+      <h1>Counter: {counter}</h1>
+    </div>
+  );
+}
+
+// Filtered User component
+function FilteredUsers({users}) {
+  useEffect(() => {
+    console.log("filtered users");
+  });
+
+  return (
+    <div>
+    <h2>Filtered Users</h2>
+    {
+      users.map(user => {
+        return (
+          <div key={user.id}>
+            <p>{user.name} - {user.email}</p>
+          </div>
+        )
+      })   
+    }
+    </div>
+  )
+}
+
+// All users
 function ReduxApp() {
   const dispatch = useDispatch();
-  const users = useSelector(state => state.users)
-  const filteredUsers = useSelector(state => state.filteredUsers)
+  const users = useSelector(state => state.user.users)
+  const filteredUsers = useSelector(state => state.user.filteredUsers)
   const [search, setSearch] =useState("");
 
   useEffect(() => {
     async function doFetch(){
+      console.log("fetching users");
       await getAllUsers(dispatch)
     }
     doFetch();
@@ -82,16 +142,7 @@ function ReduxApp() {
       <form onSubmit={handleSubmit}>
         <input type="text" placeholder ="search by name" value={search} onChange={handleChange}/>
       </form>
-      <h2>Filtered Users</h2>
-      {
-        filteredUsers.map(user => {
-          return (
-            <div key={user.id}>
-              <p>{user.name} - {user.email}</p>
-            </div>
-          )
-        })   
-      }
+      <FilteredUsers users={filteredUsers}/>
 
       <h2>All Users</h2>
       {
@@ -107,15 +158,15 @@ function ReduxApp() {
   );
 }
 
-
+// The App
 export default function ReduxPerformance() {
   return (
     <Provider store={store}>
       <div>
         <h1>Redux Performance</h1>
+        <Counter />
         <ReduxApp />
       </div>  
     </Provider>
   );
-
 }
