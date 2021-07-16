@@ -70,18 +70,33 @@ function Counter() {
 
   const intervalId = React.useRef();
 
+  const[stop, toggleCounter] = React.useState(false);
+
   useEffect(() => {
+    if (stop) return;
     intervalId.current = setInterval(() => {
       dispatch({type: 'INCREMENT'});
     },500);
     return () => {
       clearInterval(intervalId.current);
     }
-  }, [dispatch]);
+  }, [dispatch, stop]);
+
+
+  const stopCounter = () => {
+    clearInterval(intervalId.current);
+    toggleCounter(true);
+  }
+
+  const startCounter = () => {
+    toggleCounter(false);
+  }
 
   return (
     <div>
       <h1>Counter: {counter}</h1>
+      <button onClick={stopCounter}>Stop Counter</button>
+      <button onClick={startCounter}>Start Counter</button>
     </div>
   );
 }
