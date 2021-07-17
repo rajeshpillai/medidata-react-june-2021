@@ -1,9 +1,10 @@
 import {useState, useEffect} from 'react';
-export function useLocalStorage(key, intitialValue = {}) {
+export function useLocalStorage(key, intitialValue = "") {
   const [value, setValue] = useState(() => {
     let data = localStorage.getItem(key) || intitialValue;
     console.log("ulc: ", data);
-    return JSON.parse(data) || intitialValue;
+    //return JSON.parse(data) || intitialValue;
+    return data ? JSON.parse(data) : intitialValue;
   });
 
   useEffect(() => {
