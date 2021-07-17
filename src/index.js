@@ -22,7 +22,7 @@ import CounterReducerApp from './hooks-app/usereducer-app';
 import ReduxDemo from './hooks-app/redux-demo';
 import NavBar from './components/navbar';
 import ViewStory from './hooks-app/story/view-story';
-
+import CustomHookStorage from './hooks-app/custom-hook-storage';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -39,6 +39,11 @@ ReactDOM.render(
           <Route path="/counter-reducer">
             <CounterReducerApp />
           </Route>
+
+          <Route path="/custom-hook-storage">
+            <CustomHookStorage />
+          </Route>
+
           <Route path="/effects-demo" component ={EffectsDemo} />
           <Route path="/story/view/:id">
               <ViewStory />
