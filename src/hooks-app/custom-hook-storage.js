@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-
+import {useLocalStorage} from '../hooks/use-localstorage';
 
 const defaultTodos = [
   { id: 1, text: 'Use Redux', complete: true },
@@ -7,13 +7,14 @@ const defaultTodos = [
 ]
 
 export default function CustomHookStorage() {
-  const [todos, setTodos] = useState(defaultTodos);
+  //const [todos, setTodos] = useState(defaultTodos);
+  const [todos, setTodos] = useLocalStorage('medi-todos-app', defaultTodos);
 
   // Run this effect only one time
-  useEffect(() => {
-    const todosString = localStorage.getItem('medi-todos-app') || [];
-    setTodos(JSON.parse(todosString));
-  }, []);
+  // useEffect(() => {
+  //   const todosString = localStorage.getItem('medi-todos-app') || [];
+  //   setTodos(JSON.parse(todosString));
+  // }, []);
 
   const addTodo = () => {
     let todoTitle = window.prompt("Enter new todo: ");
@@ -25,9 +26,12 @@ export default function CustomHookStorage() {
 
   const saveTodo = () =>{
     const todosJSON = JSON.stringify(todos);
-    localStorage.setItem('medi-todos-app', todosJSON);
+    //localStorage.setItem('medi-todos-app', todosJSON);
+    setTodos(todosJSON);
     alert("Todos saved successfuly.");
   }
+
+  console.log("todos: ", todos);
 
   return (
     <div>
