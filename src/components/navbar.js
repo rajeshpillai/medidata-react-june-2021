@@ -13,8 +13,7 @@ export default function NavBar() {
       <li><Link to="/effects-demo">Effects Demo</Link></li>
       <li><Link to="/custom-hook-storage">Custom Hooks Storage</Link></li>
       <li><Link to="/use-fetch-demo">useFetch Demo: Custom Hook</Link></li>
-      
-      
+      <li><Link to="/performance-test-one">Performance Test One</Link></li>
     </ul>
   );
 }

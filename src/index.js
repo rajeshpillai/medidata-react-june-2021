@@ -24,6 +24,7 @@ import NavBar from './components/navbar';
 import ViewStory from './hooks-app/story/view-story';
 import CustomHookStorage from './hooks-app/custom-hook-storage';
 import UseFetchDemo from './hooks-app/usefetch-demo';
+import PerformanceTestOne from './hooks-app/perform-one';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -50,6 +51,8 @@ ReactDOM.render(
           </Route>
 
           <Route path="/effects-demo" component ={EffectsDemo} />
+          <Route path="/performance-test-one" component ={PerformanceTestOne} />
+          
           <Route path="/story/view/:id">
               <ViewStory />
           </Route>

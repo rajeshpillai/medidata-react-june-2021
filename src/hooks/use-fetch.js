@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useCallback} from 'react';
 import {useLocalStorage} from './use-localstorage';
 
 export function useFetch(url) {
@@ -12,9 +12,11 @@ export function useFetch(url) {
 
   console.log("token: ", token);
 
-  const doFetch = (options = {}) => {
+  const doFetchIn = (options = {}) => {
     setIsLoading(true);
   }
+
+  const doFetch = useCallback(doFetchIn, []);
 
   // Make API calls here
   useEffect(() => { 

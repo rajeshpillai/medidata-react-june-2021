@@ -39,7 +39,7 @@ export default function UseFetchDemo() {
       {!isLoading &&
         response.map((product, index) => (  
           <div key={index}> 
-            <h3>{product.name}</h3>
+            <h3>{product.title}</h3>
             <p>{product.description}</p>
           </div>
         ))
