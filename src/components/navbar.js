@@ -12,6 +12,8 @@ export default function NavBar() {
       <li><Link to="/counter-reducer">Counter Reducer</Link></li>
       <li><Link to="/effects-demo">Effects Demo</Link></li>
       <li><Link to="/custom-hook-storage">Custom Hooks Storage</Link></li>
+      <li><Link to="/use-fetch-demo">useFetch Demo: Custom Hook</Link></li>
+      
       
     </ul>
   );

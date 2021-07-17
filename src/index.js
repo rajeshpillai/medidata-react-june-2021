@@ -23,6 +23,7 @@ import ReduxDemo from './hooks-app/redux-demo';
 import NavBar from './components/navbar';
 import ViewStory from './hooks-app/story/view-story';
 import CustomHookStorage from './hooks-app/custom-hook-storage';
+import UseFetchDemo from './hooks-app/usefetch-demo';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -42,6 +43,10 @@ ReactDOM.render(
 
           <Route path="/custom-hook-storage">
             <CustomHookStorage />
+          </Route>
+
+          <Route path="/use-fetch-demo">
+            <UseFetchDemo />
           </Route>
 
           <Route path="/effects-demo" component ={EffectsDemo} />
